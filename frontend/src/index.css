@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  background-color: #F8FAFC;
+  color: #1E293B;
+}
+
+html,
+body,
+#root {
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: #F8FAFC;
+}
+
+@layer base {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-poppins font-bold;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply px-6 py-3 bg-primary text-white font-semibold rounded-lg shadow-lg hover:bg-primary-light transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply px-6 py-3 bg-white text-primary font-semibold rounded-lg border-2 border-primary shadow-sm hover:bg-slate-50 transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95;
+  }
+
+  .btn-accent {
+    @apply px-6 py-3 bg-accent text-white font-semibold rounded-lg shadow-lg hover:bg-accent-light transition-all duration-300 transform hover:-translate-y-0.5 active:scale-95;
+  }
+
+  .glass-card {
+    @apply bg-white bg-opacity-80 backdrop-blur-md border border-white border-opacity-30 shadow-xl rounded-2xl;
+  }
+}
+
+/* Custom Utilities */
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent;
+}
+
+.bg-hero-pattern {
+  background-image: radial-gradient(circle at 2px 2px, rgba(11, 60, 93, 0.05) 1px, transparent 0);
+  background-size: 24px 24px;
+}

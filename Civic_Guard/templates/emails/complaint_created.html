@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complaint Registered – Civic Guard</title>
+    <!--[if mso]><noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript><![endif]-->
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f0f4f8;
+            color: #1a202c;
+        }
+
+        /* Wrapper */
+        .email-wrapper {
+            max-width: 620px;
+            margin: 32px auto;
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #1a3c6d 0%, #2563eb 100%);
+            padding: 36px 40px 28px;
+            text-align: center;
+        }
+
+        .header .logo-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .header .shield {
+            font-size: 32px;
+            line-height: 1;
+        }
+
+        .header .brand {
+            color: #ffffff;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+        .header .tagline {
+            color: #93c5fd;
+            font-size: 13px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Status Banner */
+        .status-banner {
+            background: #0f766e;
+            color: #ffffff;
+            text-align: center;
+            padding: 14px 20px;
+            font-size: 15px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        .status-banner span {
+            margin-right: 6px;
+        }
+
+        /* Body */
+        .body-content {
+            padding: 36px 40px;
+        }
+
+        .greeting {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 12px;
+        }
+
+        .intro-text {
+            font-size: 15px;
+            color: #4a5568;
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+        /* Complaint Card */
+        .complaint-card {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #2563eb;
+            border-radius: 10px;
+            padding: 22px 24px;
+            margin-bottom: 28px;
+        }
+
+        .complaint-card h3 {
+            font-size: 13px;
+            font-weight: 700;
+            color: #718096;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        .detail-row {
+            display: flex;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .detail-label {
+            color: #718096;
+            min-width: 130px;
+            font-weight: 600;
+        }
+
+        .detail-value {
+            color: #1a202c;
+            flex: 1;
+        }
+
+        .status-badge {
+            display: inline-block;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 10px;
+            padding: 18px 22px;
+            margin-bottom: 28px;
+        }
+
+        .info-box p {
+            font-size: 14px;
+            color: #1e40af;
+            line-height: 1.7;
+        }
+
+        .info-box .info-icon {
+            margin-right: 6px;
+        }
+
+        /* Steps */
+        .steps-section h3 {
+            font-size: 14px;
+            font-weight: 700;
+            color: #4a5568;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 14px;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+            font-size: 14px;
+            color: #4a5568;
+        }
+
+        .step-num {
+            background: #2563eb;
+            color: #fff;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            font-size: 12px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 22px;
+            margin-right: 12px;
+            margin-top: 1px;
+        }
+
+        /* Divider */
+        .divider {
+            border: none;
+            border-top: 1px solid #e2e8f0;
+            margin: 24px 0;
+        }
+
+        /* Footer */
+        .footer {
+            background: #f7fafc;
+            border-top: 1px solid #e2e8f0;
+            padding: 24px 40px;
+            text-align: center;
+        }
+
+        .footer .regards {
+            font-size: 14px;
+            color: #4a5568;
+            margin-bottom: 4px;
+        }
+
+        .footer .team-name {
+            font-size: 14px;
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+        .footer .footer-note {
+            font-size: 12px;
+            color: #a0aec0;
+            margin-top: 16px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="email-wrapper">
+
+        <!-- Header -->
+        <div class="header">
+            <div class="logo-row">
+                <span class="shield">🛡️</span>
+                <span class="brand">Civic Guard</span>
+            </div>
+            <div class="tagline">AI-Powered Grievance Management</div>
+        </div>
+
+        <!-- Status Banner -->
+        <div class="status-banner">
+            <span>✅</span> Complaint Successfully Registered
+        </div>
+
+        <!-- Body -->
+        <div class="body-content">
+
+            <p class="greeting">Hello {{ user_name }},</p>
+            <p class="intro-text">
+                Your complaint has been <strong>successfully registered</strong> on the Civic Guard platform.
+                Our team has received your submission and will begin reviewing it shortly.
+            </p>
+
+            <!-- Complaint Details Card -->
+            <div class="complaint-card">
+                <h3>📋 Complaint Details</h3>
+
+                <div class="detail-row">
+                    <span class="detail-label">Complaint ID</span>
+                    <span class="detail-value"><strong>{{ complaint.tracking_id }}</strong></span>
+                </div>
+
+                <div class="detail-row">
+                    <span class="detail-label">Title</span>
+                    <span class="detail-value">{{ complaint.title }}</span>
+                </div>
+
+                <div class="detail-row">
+                    <span class="detail-label">Description</span>
+                    <span class="detail-value">{{ complaint.description|truncatechars:200 }}</span>
+                </div>
+
+                <div class="detail-row">
+                    <span class="detail-label">Category</span>
+                    <span class="detail-value">{{ complaint.get_category_display }}</span>
+                </div>
+
+                <div class="detail-row">
+                    <span class="detail-label">Urgency</span>
+                    <span class="detail-value">{{ complaint.get_urgency_display }}</span>
+                </div>
+
+                <div class="detail-row">
+                    <span class="detail-label">Current Status</span>
+                    <span class="detail-value">
+                        <span class="status-badge">⏳ Pending</span>
+                    </span>
+                </div>
+
+                <div class="detail-row">
+                    <span class="detail-label">Submitted On</span>
+                    <span class="detail-value">{{ complaint.created_at|date:"F j, Y – H:i" }} IST</span>
+                </div>
+            </div>
+
+            <!-- Info Box -->
+            <div class="info-box">
+                <p>
+                    <span class="info-icon">ℹ️</span>
+                    <strong>What happens next?</strong><br />
+                    Our civic team will review your complaint and assign it to the appropriate department.
+                    You will receive an email notification whenever your complaint status is updated.
+                </p>
+            </div>
+
+            <!-- Process Steps -->
+            <div class="steps-section">
+                <h3>📌 Your Complaint Journey</h3>
+
+                <div class="step-item">
+                    <div class="step-num">1</div>
+                    <div>Complaint submitted and registered <strong>(You are here)</strong></div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">2</div>
+                    <div>Under review by our civic team</div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">3</div>
+                    <div>Assigned to the relevant department</div>
+                </div>
+                <div class="step-item">
+                    <div class="step-num">4</div>
+                    <div>Issue resolved — you'll receive a confirmation email</div>
+                </div>
+            </div>
+
+            <hr class="divider" />
+
+            <p style="font-size:14px;color:#4a5568;line-height:1.7;">
+                You can track your complaint at any time using your tracking ID:
+                <strong style="color:#2563eb;">{{ complaint.tracking_id }}</strong>.
+                Thank you for contributing to a better civic environment. 🙏
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p class="regards">Regards,</p>
+            <p class="team-name">🛡️ Civic Guard Support Team</p>
+            <p class="footer-note">
+                This is an automated notification. Please do not reply to this email.<br />
+                © {{ complaint.created_at|date:"Y" }} Civic Guard. All rights reserved.
+            </p>
+        </div>
+
+    </div>
+</body>
+
+</html>

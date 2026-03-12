@@ -1,0 +1,11 @@
+/* Global styles for CivicGuard */
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove default Vite styles that center and pad the app */
+:root {
+  max-width: none;
+}
