@@ -6,9 +6,9 @@ import EmergencyBanner from '../EmergencyBanner';
 
 const MainLayout = () => {
     return (
-        <div className="min-h-screen bg-slate-50 flex flex-col">
+        <div className="min-h-screen bg-slate-50 flex flex-col relative w-full overflow-x-hidden">
             <Navbar />
-            <main className="flex-1 pt-24 md:pt-32">
+            <main className="flex-1 flex flex-col w-full relative">
                 <Outlet />
             </main>
             <Footer />

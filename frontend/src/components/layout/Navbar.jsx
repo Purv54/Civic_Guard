@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Shield, PlusCircle, LayoutDashboard } from 'lucide-react';
+import { Menu, X, Shield, PlusCircle, LayoutDashboard, UserCircle } from 'lucide-react';
 import Button from '../common/Button';
 import { useAuth } from '../../context/AuthContext';
 import NotificationBell from '../NotificationBell';
@@ -30,12 +30,12 @@ const Navbar = () => {
     ];
 
     return (
-        <header className="fixed top-0 left-0 w-full z-50">
+        <header className="sticky top-0 w-full z-50 bg-slate-50 border-b border-slate-200 shadow-sm transition-all duration-300">
             <EmergencyBanner />
             <nav
-                className={`w-full transition-all duration-300 ${isScrolled || location.pathname !== '/'
-                    ? 'bg-white/80 backdrop-blur-md shadow-lg py-3'
-                    : 'bg-transparent py-5'
+                className={`w-full transition-all duration-300 bg-white/90 backdrop-blur-md ${isScrolled || location.pathname !== '/'
+                    ? 'py-3'
+                    : 'py-4'
                     }`}
             >
                 <div className="container mx-auto px-6 flex justify-between items-center">
@@ -85,6 +85,16 @@ const Navbar = () => {
                                     <LayoutDashboard size={18} />
                                     <span>Dashboard</span>
                                 </Button>
+                                {/* Profile avatar button */}
+                                <button
+                                    onClick={() => navigate('/profile')}
+                                    title="My Profile"
+                                    className="w-9 h-9 rounded-full bg-primary/10 border-2 border-primary/20 hover:border-accent hover:bg-accent/10 flex items-center justify-center text-primary font-bold text-sm transition-all"
+                                >
+                                    {user.first_name
+                                        ? user.first_name.charAt(0).toUpperCase()
+                                        : user.username?.charAt(0).toUpperCase()}
+                                </button>
                             </div>
                         ) : (
                             <div className="flex items-center space-x-4">
@@ -160,6 +170,16 @@ const Navbar = () => {
                                         >
                                             Go to Dashboard
                                         </Button>
+                                        <button
+                                            onClick={() => {
+                                                setMobileMenuOpen(false);
+                                                navigate('/profile');
+                                            }}
+                                            className="w-full flex items-center justify-center gap-2 py-3 bg-slate-50 text-primary font-bold rounded-xl border border-slate-200 hover:bg-primary/5 transition-all"
+                                        >
+                                            <UserCircle size={18} />
+                                            My Profile
+                                        </button>
                                     </div>
                                 ) : (
                                     <>

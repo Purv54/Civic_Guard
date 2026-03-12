@@ -31,6 +31,18 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    // Re-fetch /auth/me/ and update global state — call this after profile edits
+    const refreshUser = async () => {
+        try {
+            const response = await api.get('/auth/me/');
+            setUser(response.data);
+            localStorage.setItem('user', JSON.stringify(response.data));
+            return response.data;
+        } catch (err) {
+            console.error('refreshUser failed:', err);
+        }
+    };
+
     const login = async (username, password) => {
         try {
             console.log(`Attempting login for: ${username}`);
@@ -94,7 +106,7 @@ export const AuthProvider = ({ children }) => {
     };
 
     return (
-        <AuthContext.Provider value={{ user, loading, login, register, logout, checkUserStatus }}>
+        <AuthContext.Provider value={{ user, loading, login, register, logout, checkUserStatus, refreshUser }}>
             {children}
         </AuthContext.Provider>
     );

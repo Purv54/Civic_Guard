@@ -122,38 +122,67 @@ class LogoutView(APIView):
 
 class MeView(APIView):
     """
-    GET  /api/auth/me/   — Retrieve current user's profile
-    PUT  /api/auth/me/   — Update current user's profile
+    GET   /api/auth/me/   — Retrieve current user's full profile
+    PATCH /api/auth/me/   — Update profile fields + optional avatar upload
+    PUT   /api/auth/me/   — Same as PATCH
     """
     permission_classes = [permissions.IsAuthenticated]
+    parser_classes     = [MultiPartParser, FormParser, JSONParser]
 
     def get(self, request):
         serializer = UserDetailSerializer(request.user)
         return Response(serializer.data)
 
-    def put(self, request):
+    def patch(self, request):
         user = request.user
-        # Update User fields
+
+        # ── Update Django User fields ──────────────────────────────────────
         user_fields = ['first_name', 'last_name', 'email']
+        changed_user_fields = []
         for field in user_fields:
             if field in request.data:
-                setattr(user, field, request.data[field])
-        user.save()
+                value = request.data[field]
+                # Validate email uniqueness
+                if field == 'email' and value:
+                    if User.objects.exclude(pk=user.pk).filter(email=value).exists():
+                        return Response(
+                            {'email': 'This email is already used by another account.'},
+                            status=status.HTTP_400_BAD_REQUEST,
+                        )
+                setattr(user, field, value)
+                changed_user_fields.append(field)
+        if changed_user_fields:
+            user.save(update_fields=changed_user_fields)
 
-        # Update UserProfile fields
+        # ── Update UserProfile fields ──────────────────────────────────────
         try:
             profile = user.profile
         except UserProfile.DoesNotExist:
             profile = UserProfile.objects.create(user=user)
 
-        profile_serializer = UserProfileSerializer(profile, data=request.data, partial=True)
-        if profile_serializer.is_valid():
-            profile_serializer.save()
+        profile_fields = ['phone', 'address', 'city', 'state', 'pincode']
+        changed_profile_fields = []
+        for field in profile_fields:
+            if field in request.data:
+                setattr(profile, field, request.data[field])
+                changed_profile_fields.append(field)
 
-        return Response(UserDetailSerializer(user).data)
+        # Handle avatar file upload
+        if 'avatar' in request.FILES:
+            profile.avatar = request.FILES['avatar']
+            changed_profile_fields.append('avatar')
 
-    def patch(self, request):
-        return self.put(request)
+        if changed_profile_fields:
+            profile.save(update_fields=changed_profile_fields)
+
+        user.refresh_from_db()
+        return Response({
+            'message': 'Profile updated successfully.',
+            'user': UserDetailSerializer(user).data,
+        }, status=status.HTTP_200_OK)
+
+    def put(self, request):
+        return self.patch(request)
 
 
 class ChangePasswordView(APIView):

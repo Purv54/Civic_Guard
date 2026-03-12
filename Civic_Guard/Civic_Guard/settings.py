@@ -28,9 +28,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ──────────────────────────────────────────────
 # Security
 # ──────────────────────────────────────────────
-SECRET_KEY = 'django-insecure-)ar$sqhex3islci71qoo#sd*iig_2-nf7v@*9-f3rn@qpqfho('
+SECRET_KEY = env('DJANGO_SECRET_KEY', default='django-insecure-)ar$sqhex3islci71qoo#sd*iig_2-nf7v@*9-f3rn@qpqfho(')
 
-DEBUG = True
+DEBUG = env('DEBUG', default=True, cast=lambda v: str(v).lower() not in ('false', '0', 'no'))
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
 
@@ -94,12 +94,17 @@ TEMPLATES = [
 WSGI_APPLICATION = 'Civic_Guard.wsgi.application'
 
 # ──────────────────────────────────────────────
-# Database
+# Database — PostgreSQL
+# Credentials are loaded from .env via python-decouple.
 # ──────────────────────────────────────────────
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME':     env('DB_NAME',     default='civic_guard_db'),
+        'USER':     env('DB_USER',     default='postgres'),
+        'PASSWORD': env('DB_PASSWORD', default=''),
+        'HOST':     env('DB_HOST',     default='localhost'),
+        'PORT':     env('DB_PORT',     default='5432'),
     }
 }
 

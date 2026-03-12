@@ -140,7 +140,7 @@ const ComplaintDetail = () => {
     }
 
     return (
-        <div className="min-h-screen bg-slate-50 pt-10 pb-20 px-6">
+        <div className="w-full bg-slate-50 pt-10 pb-20 px-4 md:px-6">
             <div className="max-w-5xl mx-auto space-y-8">
                 {/* Top Nav */}
                 <div className="flex items-center justify-between">

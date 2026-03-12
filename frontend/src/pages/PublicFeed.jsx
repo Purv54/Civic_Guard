@@ -226,7 +226,7 @@ const PublicFeed = () => {
     return (
         <div className="bg-slate-50 font-inter">
             {/* Premium Header */}
-            <div className="bg-white border-b border-slate-100 pt-32 pb-12 overflow-hidden relative">
+            <div className="bg-white border-b border-slate-100 pt-12 pb-12 overflow-hidden relative">
                 {/* Background Decorations */}
                 <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
 
@@ -267,7 +267,7 @@ const PublicFeed = () => {
             </div>
 
             {/* Advanced Filter Bar */}
-            <div className="sticky top-[80px] z-30 bg-white/80 backdrop-blur-xl border-b border-slate-100 py-3 shadow-sm">
+            <div className="sticky top-[72px] z-30 bg-white/80 backdrop-blur-xl border-b border-slate-100 py-3 shadow-sm">
                 <div className="max-w-7xl mx-auto px-6">
                     <form onSubmit={handleSearch} className="flex flex-wrap items-center gap-3">
                         <div className="relative flex-1 min-w-[280px]">

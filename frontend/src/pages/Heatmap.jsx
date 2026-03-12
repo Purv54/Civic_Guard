@@ -42,7 +42,7 @@ const Heatmap = () => {
     };
 
     if (loading) return (
-        <div className="h-screen flex items-center justify-center bg-slate-50">
+        <div className="flex-1 flex items-center justify-center bg-slate-50 min-h-[500px]">
             <div className="text-center">
                 <Loader2 className="animate-spin text-primary mx-auto mb-4" size={48} />
                 <p className="text-slate-500 font-medium">Loading Civic Intelligence Map...</p>
@@ -51,7 +51,7 @@ const Heatmap = () => {
     );
 
     return (
-        <div className="h-[calc(100vh-6rem)] md:h-[calc(100vh-8rem)] flex flex-col">
+        <div className="flex-1 flex flex-col relative min-h-[500px]">
             {/* Map Header */}
             <div className="bg-white border-b border-slate-100 p-4 shrink-0 flex items-center justify-between shadow-sm z-[1001]">
                 <div>
